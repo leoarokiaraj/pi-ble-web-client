@@ -5,7 +5,9 @@ on:
     branches:
       - main
     paths:
-      - /**
+      - app.js
+      - index.html
+      - styles.css
       - .github/workflows/pages.yml
   workflow_dispatch:
 
@@ -31,7 +33,7 @@ jobs:
       - name: Prepare static site artifact
         run: |
           mkdir -p site
-          cp -r /* site/
+          rsync -av --exclude 'site/' --exclude '.github/' --exclude '.git/' ./ site/
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
