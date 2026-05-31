@@ -1,0 +1,278 @@
+:root {
+  --bg: #0d1b1e;
+  --bg2: #15272b;
+  --card: #f5f0e6;
+  --ink: #1f1a17;
+  --muted: #5e5a55;
+  --ok: #1f9d55;
+  --warn: #b26a00;
+  --err: #b42318;
+  --accent: #2f6fec;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 15% 10%, #2f6f70 0%, var(--bg) 45%),
+              linear-gradient(140deg, var(--bg2), var(--bg));
+  min-height: 100vh;
+}
+
+.app {
+  width: min(980px, 94vw);
+  margin: 2rem auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.header {
+  color: #f8f5ef;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  letter-spacing: 0.02em;
+}
+
+.header p {
+  margin: 0.35rem 0 0;
+  color: #d8ded4;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.grid.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.92rem;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #c3b9ab;
+  border-radius: 9px;
+  padding: 0.6rem 0.7rem;
+  font: inherit;
+}
+
+.actions,
+.command-row,
+.quick-actions,
+.log-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+  flex-wrap: wrap;
+}
+
+button {
+  border: 0;
+  border-radius: 9px;
+  padding: 0.58rem 0.9rem;
+  font: inherit;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+button[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+button.quick {
+  background: #344054;
+}
+
+#commandInput {
+  flex: 1;
+  min-width: 240px;
+}
+
+.status {
+  margin: 0.7rem 0 0;
+  font-weight: 600;
+}
+
+.status.ok {
+  color: var(--ok);
+}
+
+.status.warn {
+  color: var(--warn);
+}
+
+.status.err {
+  color: var(--err);
+}
+
+.hint {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.logs {
+  background: #111827;
+  color: #e5e7eb;
+  border-radius: 10px;
+  padding: 0.8rem;
+  height: 260px;
+  overflow: auto;
+  margin: 0.8rem 0 0;
+  white-space: pre-wrap;
+  line-height: 1.4;
+}
+
+@media (max-width: 760px) {
+  .grid.two {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Wi-Fi section ──────────────────────────────────────────────────────────── */
+.wifi-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.connected-badge {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: #d1fae5;
+  color: #065f46;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.wifi-list {
+  border: 1px solid #c3b9ab;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.wifi-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid #e5ddd3;
+  font-size: 0.9rem;
+}
+
+.wifi-row:last-child { border-bottom: none; }
+
+.wifi-row--connected { background: #f0fdf4; }
+
+.wifi-ssid {
+  flex: 1;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wifi-signal {
+  font-size: 0.78rem;
+  letter-spacing: -0.05em;
+  color: #5e5a55;
+  white-space: nowrap;
+}
+
+.wifi-badge {
+  margin-left: 0.4rem;
+  padding: 0.15rem 0.45rem;
+  background: #d1fae5;
+  color: #065f46;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+.wifi-pick {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.82rem;
+  background: #344054;
+}
+
+.wifi-details {
+  margin-top: 0.75rem;
+  border: 1px solid #c3b9ab;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.wifi-details summary {
+  padding: 0.6rem 0.8rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  user-select: none;
+  list-style: none;
+}
+
+.wifi-details summary:hover { background: rgba(0,0,0,0.04); }
+
+.wifi-form {
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.75rem 0.8rem 0.8rem;
+  border-top: 1px solid #e5ddd3;
+}
+
+.pw-wrap {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.pw-wrap input { flex: 1; }
+
+.icon-btn {
+  padding: 0.4rem 0.6rem;
+  background: #e5ddd3;
+  color: var(--ink);
+  border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.icon-btn:hover { background: #d3c8bc; }
+
+.wifi-status {
+  margin: 0.55rem 0 0;
+  font-size: 0.88rem;
+  font-weight: 500;
+  min-height: 1.4em;
+}
+
+.wifi-status.ok  { color: var(--ok); }
+.wifi-status.err { color: var(--err); }
