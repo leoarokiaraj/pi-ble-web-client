@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - web-ble-client/**
+      - /**
       - .github/workflows/pages.yml
   workflow_dispatch:
 
@@ -31,7 +31,7 @@ jobs:
       - name: Prepare static site artifact
         run: |
           mkdir -p site
-          cp -r web-ble-client/* site/
+          cp -r /* site/
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
